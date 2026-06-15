@@ -41,5 +41,15 @@ jobs:
       - name: Dry-run pack
         run: pnpm run pack:dry-run
 
+      - name: Verify release tag matches package version
+        run: |
+          PACKAGE_VERSION="$(node -p "require('./package.json').version")"
+          EXPECTED_TAG="v${PACKAGE_VERSION}"
+          if [ "${GITHUB_REF_NAME}" != "${EXPECTED_TAG}" ]; then
+            echo "❌ Release tag mismatch: pushed tag '${GITHUB_REF_NAME}' must match package version '${PACKAGE_VERSION}' (${EXPECTED_TAG})." >&2
+            exit 1
+          fi
+          echo "✅ Release tag matches package version: ${EXPECTED_TAG}"
+
       - name: Publish to npm
         run: npm publish --provenance --access public
