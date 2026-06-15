@@ -1,0 +1,48 @@
+{
+  "name": "@jayjnu/simple-worktree",
+  "version": "0.1.0",
+  "description": "Config-driven Git worktree bootstrap and cleanup CLI.",
+  "license": "MIT",
+  "type": "module",
+  "publishConfig": {
+    "access": "public"
+  },
+  "bin": {
+    "simple-worktree": "dist/bin/cli.js",
+    "swt": "dist/bin/cli.js"
+  },
+  "files": [
+    "dist/",
+    "README.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "build": "node -e \"require('fs').rmSync('dist', { recursive: true, force: true })\" && tsc -p tsconfig.json && node -e \"require('fs').chmodSync('dist/bin/cli.js', 0o755)\"",
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "lint": "pnpm run typecheck",
+    "lint-staged": "lint-staged",
+    "test": "pnpm run build && node test/cli.test.mjs && node test/core-ports.test.mjs && node test/worktree.test.mjs",
+    "prepare": "husky",
+    "prepack": "pnpm run build",
+    "pack:dry-run": "pnpm pack --dry-run"
+  },
+  "engines": {
+    "node": ">=22.22.1"
+  },
+  "dependencies": {
+    "yaml": "^2.8.1"
+  },
+  "devDependencies": {
+    "@types/node": "^22.19.21",
+    "husky": "^9.1.7",
+    "lint-staged": "^17.0.7",
+    "typescript": "^5.7.2"
+  },
+  "keywords": [
+    "git",
+    "worktree",
+    "cli",
+    "pnpm"
+  ],
+  "packageManager": "pnpm@10.32.1"
+}
