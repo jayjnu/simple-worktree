@@ -37,6 +37,12 @@ worktree 기능을 사용할 저장소에서 실행하세요:
 pnpm dlx @jayjnu/simple-worktree init
 ```
 
+npm 기준으로는 다음과 같습니다:
+
+```bash
+npx @jayjnu/simple-worktree init
+```
+
 생성된 설정을 확인하고 commit합니다:
 
 ```bash
@@ -50,10 +56,22 @@ worktree를 생성합니다:
 pnpm dlx @jayjnu/simple-worktree create feature/my-task
 ```
 
+npm 기준:
+
+```bash
+npx @jayjnu/simple-worktree create feature/my-task
+```
+
 나중에 정리합니다:
 
 ```bash
 pnpm dlx @jayjnu/simple-worktree cleanup feature/my-task
+```
+
+npm 기준:
+
+```bash
+npx @jayjnu/simple-worktree cleanup feature/my-task
 ```
 
 > child worktree 안에서 `--config` 없이 `cleanup`을 실행하고 싶다면, worktree를 만들기 전에 `.worktree.yaml`을 commit해두세요.
@@ -72,6 +90,14 @@ pnpm exec swt cleanup feature/my-task
 
 ```bash
 pnpm add -g @jayjnu/simple-worktree
+swt create feature/my-task
+swt cleanup feature/my-task
+```
+
+npm 전역 설치:
+
+```bash
+npm install -g @jayjnu/simple-worktree
 swt create feature/my-task
 swt cleanup feature/my-task
 ```

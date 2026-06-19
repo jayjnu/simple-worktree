@@ -37,6 +37,12 @@ Run this in the repository where you want to use worktrees:
 pnpm dlx @jayjnu/simple-worktree init
 ```
 
+Or with npm:
+
+```bash
+npx @jayjnu/simple-worktree init
+```
+
 Review and commit the generated config:
 
 ```bash
@@ -50,10 +56,22 @@ Create a worktree:
 pnpm dlx @jayjnu/simple-worktree create feature/my-task
 ```
 
+With npm:
+
+```bash
+npx @jayjnu/simple-worktree create feature/my-task
+```
+
 Clean it up later:
 
 ```bash
 pnpm dlx @jayjnu/simple-worktree cleanup feature/my-task
+```
+
+With npm:
+
+```bash
+npx @jayjnu/simple-worktree cleanup feature/my-task
 ```
 
 > Commit `.worktree.yaml` before creating child worktrees if you want to run `cleanup` from inside a child worktree without passing `--config`.
@@ -72,6 +90,14 @@ Global install:
 
 ```bash
 pnpm add -g @jayjnu/simple-worktree
+swt create feature/my-task
+swt cleanup feature/my-task
+```
+
+Global install with npm:
+
+```bash
+npm install -g @jayjnu/simple-worktree
 swt create feature/my-task
 swt cleanup feature/my-task
 ```
